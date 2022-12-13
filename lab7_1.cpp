@@ -1,6 +1,6 @@
 #include<iostream>
 #include<string>
-
+#include<cstdlib>
 using namespace std;
 
 string func1(string x){
@@ -23,19 +23,33 @@ string func2(string x){
 	return y;	
 }
 
-string func3(string x){
-	int i = 0, L = x.size();
-	string y = "";
-	while(i < L){
-		y += tolower(x[i]);
+bool func3(string x){
+	size_t i = 0, L = x.size();
+	string y = x;
+	while(i < x.size()){
+		
+		if(x[i] == y[L-1]) {
+			if(i == (x.size()+1)/2) return true;
+		}
+		else return false;
 		i++;
+		L--;
 	}
-	return y;	
+	return EXIT_SUCCESS;
 }
 
 int main(){
-    cout >> "Input text: "
-    cout >> "Reversed text: "
-    cout >> "Palindrome: "
+	string x;
+	bool y;
+    cout << "Input text: ";
+	cin >> x;
+    cout << "Reversed text: ";
+	cout << func1(x);
+	//
+	x = func2(x);
+	y = func3(x);
+    cout << "\nPalindrome: ";
+	if(y == true) cout << "Yes";
+	else cout << "No";
     return 0;
 }

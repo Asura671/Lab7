@@ -1,7 +1,19 @@
 #include<iostream>
 
 using namespace std;
+int adiff(int a1,int a2){
+  a1 %= 360;// ให้มุมอยู่ในวงกลมก่อน
+  a2 %= 360;
+  if(a1 >= a2 ) {
+    if(a1-a2 >= 180) return 360-a1+a2;
+    return a1-a2;
+  }
+  else {
+    if(a2-a1 >= 180) return 360-a2+a1;
+    return a2-a1;
+  }
 
+}
 
 int main(){
   cout << adiff(180,270);
